@@ -29,7 +29,7 @@ public class UserInterface {
             System.out.print("-");
         }
         else {
-            System.out.print("piece");
+            System.out.print(piece);
         }
         System.out.print(" ");
     }

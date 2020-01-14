@@ -3,25 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package chess;
+package chess.pieces;
 
 import boardGame.Board;
-import boardGame.Piece;
+import chess.ChessPiece;
+import chess.Color;
 
 /**
  *
  * @author Murilo Araujo
  */
-public class ChessPiece extends Piece {
+public class King extends ChessPiece {
     
-    private Color color;
-
-    public ChessPiece(Board board, Color color) {
-        super(board);
-        this.color = color;
+    public King(Board board, Color color) {
+        super(board, color);
     }
-
-    public Color getColor() {
-        return color;
+    
+    @Override
+    public String toString() {
+        return "K";
     }
 }
