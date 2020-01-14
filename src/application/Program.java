@@ -7,6 +7,9 @@ package application;
 
 import boardGame.Board;
 import chess.ChessMatch;
+import chess.ChessPiece;
+import chess.ChessPosition;
+import java.util.Scanner;
 
 /**
  *
@@ -19,9 +22,23 @@ public class Program {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+
+        Scanner sc = new Scanner(System.in);
         ChessMatch chessMatch = new ChessMatch();
-        UserInterface.printBoard(chessMatch.getPieces());
+
+        while (true) {
+            UserInterface.printBoard(chessMatch.getPieces());
+            System.out.println();
+            System.out.println("Source: ");
+            ChessPosition source = UserInterface.readChessPosition(sc);
+            
+            System.out.println();
+            System.out.println("Target: ");
+            ChessPosition target = UserInterface.readChessPosition(sc);
+     
+            ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+            
+        }
     }
-    
+
 }
