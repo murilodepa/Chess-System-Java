@@ -5,12 +5,13 @@
  */
 package application;
 
-import boardGame.Board;
 import chess.ChessException;
 import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -27,30 +28,34 @@ public class Program {
 
         Scanner sc = new Scanner(System.in);
         ChessMatch chessMatch = new ChessMatch();
+        List<ChessPiece> captured = new ArrayList<>();
 
         while (true) {
             try {
-            UserInterface.clearScreen();
-            UserInterface.printMatch(chessMatch);
-            System.out.println();
-            System.out.print("Source: ");
-            ChessPosition source = UserInterface.readChessPosition(sc);
+                UserInterface.clearScreen();
+                UserInterface.printMatch(chessMatch, captured);
+                System.out.println();
+                System.out.print("Source: ");
+                ChessPosition source = UserInterface.readChessPosition(sc);
+
+                boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+                UserInterface.clearScreen();
+                UserInterface.printBoard(chessMatch.getPieces(), possibleMoves);
+
+                System.out.println();
+                System.out.print("Target: ");
+                ChessPosition target = UserInterface.readChessPosition(sc);
+
+                ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
             
-            boolean[][] possibleMoves = chessMatch.possibleMoves(source);
-            UserInterface.clearScreen();
-            UserInterface.printBoard(chessMatch.getPieces(), possibleMoves);
+                    if(capturedPiece != null){
+                        captured.add(capturedPiece);
+                    }
             
-            System.out.println();
-            System.out.print("Target: ");
-            ChessPosition target = UserInterface.readChessPosition(sc);
-     
-            ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
-            }
-            catch(ChessException e){
+            } catch (ChessException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
-            }
-            catch(InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             }
