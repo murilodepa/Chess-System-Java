@@ -29,7 +29,7 @@ public class Program {
         Scanner sc = new Scanner(System.in);
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> captured = new ArrayList<>();
-
+        
         while (!chessMatch.getCkeckMate()) {
             try {
                 UserInterface.clearScreen();
@@ -37,21 +37,27 @@ public class Program {
                 System.out.println();
                 System.out.print("Source: ");
                 ChessPosition source = UserInterface.readChessPosition(sc);
-
+                
                 boolean[][] possibleMoves = chessMatch.possibleMoves(source);
                 UserInterface.clearScreen();
                 UserInterface.printBoard(chessMatch.getPieces(), possibleMoves);
-
+                
                 System.out.println();
                 System.out.print("Target: ");
                 ChessPosition target = UserInterface.readChessPosition(sc);
-
+                
                 ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
-            
-                    if(capturedPiece != null){
-                        captured.add(capturedPiece);
-                    }
-            
+                
+                if (capturedPiece != null) {
+                    captured.add(capturedPiece);
+                }
+                
+                if (chessMatch.getPromoted() != null) {
+                    System.out.print("Enter piece for promotion (B/N/R/Q): ");
+                    String type = sc.nextLine();
+                    chessMatch.replacePromotedPiece(type);
+                }
+                
             } catch (ChessException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
@@ -62,6 +68,6 @@ public class Program {
         }
         
         UserInterface.clearScreen();
-        UserInterface.printMatch(chessMatch, captured); 
+        UserInterface.printMatch(chessMatch, captured);        
     }
 }
