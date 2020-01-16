@@ -55,7 +55,6 @@ public class UserInterface {
         try {
             String pos = sc.nextLine();
             pos = pos.toLowerCase();
-            System.out.println(pos);
             char column = pos.charAt(0);
             int row = Integer.parseInt(pos.substring(1));
 
