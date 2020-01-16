@@ -10,6 +10,7 @@ import boardGame.Piece;
 import boardGame.Position;
 import chess.pieces.Bishop;
 import chess.pieces.King;
+import chess.pieces.Knight;
 import chess.pieces.Pawn;
 import chess.pieces.Rook;
 import java.util.ArrayList;
@@ -212,11 +213,7 @@ public class ChessMatch {
 
     private void initialSetup() {
     
-        placeNewPiece('a', 1, new Rook(board, Color.WHITE));
-        placeNewPiece('c', 1, new Bishop(board, Color.WHITE));
-        placeNewPiece('f', 1, new Bishop(board, Color.WHITE));
-        placeNewPiece('e', 1, new King(board, Color.WHITE));
-        placeNewPiece('h', 1, new Rook(board, Color.WHITE));
+        // Pawns White
         placeNewPiece('a', 2, new Pawn(board, Color.WHITE));
         placeNewPiece('b', 2, new Pawn(board, Color.WHITE));
         placeNewPiece('c', 2, new Pawn(board, Color.WHITE));
@@ -225,12 +222,24 @@ public class ChessMatch {
         placeNewPiece('f', 2, new Pawn(board, Color.WHITE));
         placeNewPiece('g', 2, new Pawn(board, Color.WHITE));
         placeNewPiece('h', 2, new Pawn(board, Color.WHITE));
-
-        placeNewPiece('a', 8, new Rook(board, Color.BLACK));
-        placeNewPiece('c', 8, new Bishop(board, Color.BLACK));
-        placeNewPiece('f', 8, new Bishop(board, Color.BLACK));
-        placeNewPiece('e', 8, new King(board, Color.BLACK));
-        placeNewPiece('h', 8, new Rook(board, Color.BLACK));
+        
+        // Knights White
+        placeNewPiece('b', 1, new Knight(board, Color.WHITE));
+        placeNewPiece('g', 1, new Knight(board, Color.WHITE));
+        
+        // Bishops White
+        placeNewPiece('c', 1, new Bishop(board, Color.WHITE));
+        placeNewPiece('f', 1, new Bishop(board, Color.WHITE));
+        
+        // Rooks White
+        placeNewPiece('a', 1, new Rook(board, Color.WHITE));
+        placeNewPiece('h', 1, new Rook(board, Color.WHITE));
+        
+        // King White
+        placeNewPiece('e', 1, new King(board, Color.WHITE));
+        
+        
+        // Pawns Black
         placeNewPiece('a', 7, new Pawn(board, Color.BLACK));
         placeNewPiece('b', 7, new Pawn(board, Color.BLACK));
         placeNewPiece('c', 7, new Pawn(board, Color.BLACK));
@@ -239,6 +248,22 @@ public class ChessMatch {
         placeNewPiece('f', 7, new Pawn(board, Color.BLACK));
         placeNewPiece('g', 7, new Pawn(board, Color.BLACK));
         placeNewPiece('h', 7, new Pawn(board, Color.BLACK));
+        
+        // Knights Black
+        placeNewPiece('b', 8, new Knight(board, Color.BLACK));
+        placeNewPiece('g', 8, new Knight(board, Color.BLACK));
+                
+        // Bishops Black
+        placeNewPiece('c', 8, new Bishop(board, Color.BLACK));
+        placeNewPiece('f', 8, new Bishop(board, Color.BLACK));
+        
+        // Rooks Black
+        placeNewPiece('h', 8, new Rook(board, Color.BLACK));
+        placeNewPiece('a', 8, new Rook(board, Color.BLACK));
+        
+        // King Black
+        placeNewPiece('e', 8, new King(board, Color.BLACK));
+        
         
     }
 }
